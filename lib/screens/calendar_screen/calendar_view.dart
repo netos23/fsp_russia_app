@@ -6,6 +6,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'calendar_presenter.dart';
 
+
 class CalendarView extends StatefulWidget {
   const CalendarView({Key? key}) : super(key: key);
 
@@ -35,7 +36,7 @@ class _CalendarViewState extends State<CalendarView>
       ),
       body: ValueListenableBuilder(
         valueListenable: prsenter.calendarFormat,
-        builder: (context,value,_){
+        builder: (context, value, _) {
           return TableCalendar(
             firstDay: DateTime.utc(2010, 10, 16),
             lastDay: DateTime.utc(2030, 3, 14),
@@ -82,37 +83,43 @@ class _CalendarViewState extends State<CalendarView>
                 color: scheme.tertiary,
               ),
             ),
-            onDaySelected: (old, next) {
-              // showBottomSheet(context: context, builder: (_)=> Container());
-              showModalBottomSheet(
-                context: context.router
-                    .parent()!
-                    .parentAsStackRouter!
-                    .navigatorKey
-                    .currentContext!,
-                builder:
-                // (_) => Container(),
-                _buildSheet,
-                enableDrag: true,
-                constraints: BoxConstraints.loose(
-                  Size.fromHeight(
-                    MediaQuery.of(context).size.height * 0.5,
-                  ),
-                ),
-              );
-            },
+            onDaySelected: prsenter.onDaySelected,
           );
         },
       ),
     );
   }
+}
 
-  Widget _buildSheet(BuildContext context) {
-    return ListView.builder(
-      itemCount: 25,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(title: Text('Item $index', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),));
-      },
-    );
-  }
+Widget buildSheet(BuildContext context) {
+  return Column(
+    children: [
+      const Spacer(),
+      Expanded(
+        flex: 9,
+        child: ListView.separated(
+          itemCount: 25,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              leading: Hero(
+                tag: '1',
+                child: Image.network(
+                  'http://www.ardecs.com/data/uploads/image/news/acm.jpg',
+                ),
+              ),
+              title: Text('Item $index', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
+              subtitle: Text('Item $index'),
+              trailing: const Icon(
+                true ? Icons.bookmark : Icons.bookmark_border,
+                color: Colors.amber,
+              ),
+            );
+          },
+          separatorBuilder: (_, __) => const SizedBox(
+            height: 10,
+          ),
+        ),
+      ),
+    ],
+  );
 }

@@ -75,6 +75,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ProfileScreen(),
       );
     },
+    FeedBackRoute.name: (routeData) {
+      final args = routeData.argsAs<FeedBackRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: FeedBackScreen(
+          key: args.key,
+          title: args.title,
+        ),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -93,16 +103,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TeamScreen(),
       );
     },
-    CreateContestRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CreateContestScreen(),
-      );
-    },
     FavouritesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const FavouritesScreen(),
+      );
+    },
+    CreateContestRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateContestScreen(),
       );
     },
   };
@@ -249,6 +259,44 @@ class ProfileRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FeedBackScreen]
+class FeedBackRoute extends PageRouteInfo<FeedBackRouteArgs> {
+  FeedBackRoute({
+    Key? key,
+    required String title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FeedBackRoute.name,
+          args: FeedBackRouteArgs(
+            key: key,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedBackRoute';
+
+  static const PageInfo<FeedBackRouteArgs> page =
+      PageInfo<FeedBackRouteArgs>(name);
+}
+
+class FeedBackRouteArgs {
+  const FeedBackRouteArgs({
+    this.key,
+    required this.title,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'FeedBackRouteArgs{key: $key, title: $title}';
+  }
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -291,20 +339,6 @@ class TeamRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CreateContestScreen]
-class CreateContestRoute extends PageRouteInfo<void> {
-  const CreateContestRoute({List<PageRouteInfo>? children})
-      : super(
-          CreateContestRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CreateContestRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [FavouritesScreen]
 class FavouritesRoute extends PageRouteInfo<void> {
   const FavouritesRoute({List<PageRouteInfo>? children})
@@ -314,6 +348,20 @@ class FavouritesRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FavouritesRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateContestScreen]
+class CreateContestRoute extends PageRouteInfo<void> {
+  const CreateContestRoute({List<PageRouteInfo>? children})
+      : super(
+          CreateContestRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateContestRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

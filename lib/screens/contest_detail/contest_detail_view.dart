@@ -1,19 +1,51 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:markdown/markdown.dart' hide Text;
+import 'package:provider/provider.dart';
+
+import 'contest_detail_presenter.dart';
 
 class ContestDetailView extends StatelessWidget {
   const ContestDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorTheme = Theme.of(context).colorScheme;
+    final presenter = context.read<ContestDetailPresenter>();
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: SizedBox(
+        height: 50,
+        child: ElevatedButton(
+          onPressed: presenter.openReview,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.rate_review_outlined),
+              SizedBox(width: 10,),
+              FittedBox(
+                child: Text('Оставить отзыв'),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 200.0,
             floating: true,
+            pinned: true,
             flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                'Title',
+                style: textTheme.headlineMedium?.copyWith(
+                  color: colorTheme.primary,
+                ),
+              ),
               background: Hero(
                 tag: 1,
                 child: Image.network(
@@ -24,10 +56,6 @@ class ContestDetailView extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text('Title', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
-              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: HtmlWidget(
