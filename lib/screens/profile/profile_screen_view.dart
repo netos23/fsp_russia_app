@@ -13,17 +13,22 @@ class ProfileScreenView extends StatelessWidget {
         body: SafeArea(
       child: Align(
         alignment: Alignment.topCenter,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text('Username'),
-              Text('Имя Фамилия'),
-              Text('2000 рейтинг'),
-              ElevatedButton(onPressed: () {}, child: Text('О нас')),
-              ElevatedButton(onPressed: () {}, child: Text('Выйти')),
-              ElevatedButton(onPressed: () {}, child: Text('Удалить аккаунт')),
-            ],
-          ),
+        child: Column(
+          children: [
+            const SizedBox(height: 16,),
+            Text('Username', style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 32, color: Theme.of(context).colorScheme.onBackground)),
+            Text('Имя Фамилия', style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 32, color: Theme.of(context).colorScheme.onBackground)),
+            Text('2000 рейтинг', style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 24, color: Theme.of(context).colorScheme.onBackground)),
+            const SizedBox(height: 16,),
+            ElevatedButton(onPressed: () {}, child: const Text('Моя команда')),
+            const Spacer(),
+            ElevatedButton(onPressed: () {}, child: const Text('О нас')),
+            ElevatedButton(onPressed: () {}, child: const Text('Выйти')),
+            ElevatedButton(
+                onPressed: () {}, child: const Text('Удалить аккаунт'),
+            ),
+            const SizedBox(height: 100,),
+          ],
         ),
       ),
     ));

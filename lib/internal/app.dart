@@ -7,11 +7,11 @@ import 'color_schemes.g.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final Color primaryColor = Color(0xFF0253FC);
-final Color darkPrimaryColor = Color(0xFF01071D);
-final Color accentColor = Color(0xFF4C9DFF);
-final Color backgroundColor = Color(0xFF132A4A);
-final Color secondaryBackgroundColor = Color(0xFF0A2552);
+const Color primaryColor = Color(0xFF0253FC);
+const Color darkPrimaryColor = Color(0xFF01071D);
+const Color accentColor = Color(0xFF4C9DFF);
+const Color backgroundColor = Color(0xFF132A4A);
+const Color secondaryBackgroundColor = Color(0xFF0A2552);
 
 class SportApp extends StatelessWidget {
   SportApp({Key? key}) : super(key: key);
