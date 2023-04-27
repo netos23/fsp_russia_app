@@ -14,6 +14,13 @@ class ProfileScreenPresenter {
   }
 
   void routeToMyTeam() {
-    router.push(TeamRoute());
+    router.navigate(TeamRoute());
+  }
+
+  void routeToMyFavorites() {
+    router.navigate(FavouritesRoute());
+  }
+
+  void routeToEditProfile() {
   }
 }

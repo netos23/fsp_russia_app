@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fsp_russia_app/widgets/contest_card.dart';
 import 'package:provider/provider.dart';
@@ -30,8 +31,9 @@ class ContestScreenView extends StatelessWidget {
             ],
           ),
         ),
-        body: SafeArea(
-          child: TabBarView(
+        body: Stack(
+          children: [
+            TabBarView(
             children: [
               ListView(
                 children: [
@@ -99,7 +101,14 @@ class ContestScreenView extends StatelessWidget {
                 ],
               ),
             ],
-          ),
+          ),Positioned(
+                right: 16.0,
+                bottom: kIsWeb? 16.0: 120.0,
+                child: FloatingActionButton(
+                  child: Icon(Icons.add),
+                  onPressed: presenter.routeToCreateContest,
+                ))
+          ],
         ),
       ),
     );

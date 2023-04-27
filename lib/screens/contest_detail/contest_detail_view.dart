@@ -58,7 +58,8 @@ class ContestDetailView extends StatelessWidget {
             delegate: SliverChildListDelegate([
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: HtmlWidget(markdownToHtml('''---
+                child: HtmlWidget(
+                    markdownToHtml('''---
 __Advertisement :)__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -303,7 +304,9 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
-''')),
+'''),
+                  textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),
+                ),
               ),
             ]),
           ),

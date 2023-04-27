@@ -107,7 +107,7 @@ Widget buildSheet(BuildContext context) {
                   'http://www.ardecs.com/data/uploads/image/news/acm.jpg',
                 ),
               ),
-              title: Text('Item $index'),
+              title: Text('Item $index', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               subtitle: Text('Item $index'),
               trailing: const Icon(
                 true ? Icons.bookmark : Icons.bookmark_border,

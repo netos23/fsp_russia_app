@@ -9,4 +9,8 @@ class ContestScreenPresenter {
   void navigateToDetailCard() {
     router.navigate(const ContestDetailRoute());
   }
+
+  void routeToCreateContest() {
+    router.navigate(CreateContestRoute());
+  }
 }
