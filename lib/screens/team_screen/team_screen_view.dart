@@ -8,6 +8,7 @@ class TeamScreenView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Моя команда'),
+        centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {
@@ -43,6 +44,10 @@ class TeamScreenView extends StatelessWidget {
                     isScrollControlled: true));
               },
               icon: const Icon(Icons.notifications)),
+          IconButton(
+              onPressed: () {
+              },
+              icon: const Icon(Icons.delete)),
         ],
       ),
       body: Column(

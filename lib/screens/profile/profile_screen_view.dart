@@ -37,6 +37,10 @@ class ProfileScreenView extends StatelessWidget {
               onPressed: presenter.routeToMyTeam,
               child: const Text('Моя команда'),
             ),
+            ElevatedButton(
+              onPressed: presenter.routeToMyFavorites,
+              child: const Text('Избранные соревнования'),
+            ),
             const Spacer(),
             ElevatedButton(onPressed: () {}, child: const Text('О нас')),
             ElevatedButton(onPressed: () {}, child: const Text('Выйти')),
