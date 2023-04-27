@@ -99,6 +99,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateContestScreen(),
       );
     },
+    FavouritesRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavouritesScreen(),
+      );
+    },
   };
 }
 
@@ -294,6 +300,20 @@ class CreateContestRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CreateContestRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavouritesScreen]
+class FavouritesRoute extends PageRouteInfo<void> {
+  const FavouritesRoute({List<PageRouteInfo>? children})
+      : super(
+          FavouritesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavouritesRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
