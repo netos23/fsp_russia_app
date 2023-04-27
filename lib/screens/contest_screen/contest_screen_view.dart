@@ -34,26 +34,37 @@ class ContestScreenView extends StatelessWidget {
           child: TabBarView(
             children: [
               ListView(
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Hero(
+                      tag: 1,
+                      child: Material(
+                        child: ContestCard(
+                          onTap: presenter.navigateToDetailCard,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
               ListView(
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
+                    child: ContestCard(
+                      onTap: presenter.navigateToDetailCard,
+                    ),
                   ),
                 ],
               ),
               ListView(
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
+                    child: ContestCard(
+                      onTap: presenter.navigateToDetailCard,
+                    ),
                   ),
                 ],
               ),

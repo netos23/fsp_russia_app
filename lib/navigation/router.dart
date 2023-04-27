@@ -13,6 +13,7 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+        AutoRoute(page: ContestDetailRoute.page),
         AutoRoute(
           initial: true,
           page: HomeRoute.page,
