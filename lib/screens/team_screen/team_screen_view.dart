@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TeamScreenView extends StatelessWidget {
+class TeamScreenView extends StatefulWidget {
   const TeamScreenView({Key? key}) : super(key: key);
+
+  @override
+  State<TeamScreenView> createState() => _TeamScreenViewState();
+}
+
+class _TeamScreenViewState extends State<TeamScreenView> {
+  bool isEditEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +62,12 @@ class TeamScreenView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Название команды'),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
+              isEditEnabled? TextField() : Text('Название команды'),
+              IconButton(onPressed: () {
+                setState(() {
+                  isEditEnabled = !isEditEnabled;
+                });
+              }, icon: Icon(isEditEnabled? Icons.close: Icons.edit))
             ],
           ),
           ListTile(
