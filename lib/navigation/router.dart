@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fsp_russia_app/screens/calendar_screen/calendar_screen.dart';
 import 'package:fsp_russia_app/screens/contest_screen/contest_screen.dart';
+import 'package:fsp_russia_app/screens/feed_back_screen/feed_back_screen.dart';
 import 'package:fsp_russia_app/screens/home_screen/home_screen.dart';
 import 'package:fsp_russia_app/screens/rating_screen/rating_screen.dart';
 import 'package:fsp_russia_app/screens/auth/auth_screen.dart';

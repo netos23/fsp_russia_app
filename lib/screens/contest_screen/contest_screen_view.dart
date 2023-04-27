@@ -39,6 +39,26 @@ class ContestScreenView extends StatelessWidget {
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ContestCard(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ContestCard(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ContestCard(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ContestCard(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ContestCard(),
+                  ),
                 ],
               ),
               ListView(
