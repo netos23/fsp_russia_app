@@ -37,15 +37,17 @@ class _RatingScreenViewState extends State<RatingScreenView> {
                   Navigator.of(context, rootNavigator: true)
                       .push(ModalBottomSheetRoute(
                           builder: (_) {
-                            return SizedBox(height: 600,
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: ListView(
-                                children: [Text(
-                                  'test'
-                                )],
+                            return SizedBox(
+                              height: 600,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: ListView(
+                                  children: const [
+                                    Text('test'),
+                                  ],
+                                ),
                               ),
-                            ),);
+                            );
                           },
                           isScrollControlled: false));
                 },

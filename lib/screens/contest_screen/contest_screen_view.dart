@@ -30,56 +30,65 @@ class ContestScreenView extends StatelessWidget {
             ],
           ),
         ),
-        body: SafeArea(
-          child: TabBarView(
-            children: [
-              ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Hero(
-                      tag: 1,
-                      child: Material(
-                        child: ContestCard(
-                          onTap: presenter.navigateToDetailCard,
+        body: Stack(
+          children: [
+            TabBarView(
+              children: [
+                ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Hero(
+                        tag: 1,
+                        child: Material(
+                          child: ContestCard(
+                            onTap: presenter.navigateToDetailCard,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
+                  ],
+                ),
+                ListView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ContestCard(
+                        onTap: presenter.navigateToDetailCard,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
+                  ],
+                ),
+                ListView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ContestCard(
+                        onTap: presenter.navigateToDetailCard,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
+                  ],
+                ),
+                ListView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ContestCard(
+                        onTap: presenter.navigateToDetailCard,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                  ],
+                ),
+              ],
+            ),
+            Positioned(
+                right: 16.0,
+                bottom: 120.0,
+                child: FloatingActionButton(
+                  child: Icon(Icons.add),
+                  onPressed: () {},
+                ))
+          ],
         ),
       ),
     );
