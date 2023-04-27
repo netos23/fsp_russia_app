@@ -6,7 +6,6 @@ import 'package:table_calendar/table_calendar.dart';
 
 import 'calendar_presenter.dart';
 
-@RoutePage()
 class CalendarView extends StatefulWidget {
   const CalendarView({Key? key}) : super(key: key);
 
