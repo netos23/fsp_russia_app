@@ -12,6 +12,8 @@ class SportApp extends StatelessWidget {
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xff4132A6),
+          primary: const Color(0xff4132A6),
+          secondary: const Color(0xff4132A6).withOpacity(0.5),
         ),
         useMaterial3: true,
       ),
