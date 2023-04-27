@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:markdown/markdown.dart' hide Text;
 
 class ContestDetailView extends StatelessWidget {
   const ContestDetailView({Key? key}) : super(key: key);
@@ -10,13 +11,26 @@ class ContestDetailView extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-              flexibleSpace: Image.network('https://codeforces.com/predownloaded/af/22/af228fee1abb015217d8c524de74898aeff36419.png'),
+            expandedHeight: 200.0,
+            floating: true,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Hero(
+                tag: 1,
+                child: Image.network(
+                  'https://codeforces.com/predownloaded/af/22/af228fee1abb015217d8c524de74898aeff36419.png',
+                ),
+              ),
+            ),
           ),
-          SliverList(delegate: SliverChildListDelegate(
-            [
-              Text('Title'),
-              Markdown(data: '''
-              ---
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text('Title'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: HtmlWidget(markdownToHtml('''---
 __Advertisement :)__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -261,9 +275,10 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
-'''),
-            ]
-          )),
+''')),
+              ),
+            ]),
+          ),
         ],
       ),
     );

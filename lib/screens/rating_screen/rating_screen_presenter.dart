@@ -1,0 +1,5 @@
+class RatingScreenPresenter {
+
+  void toUserProfile() {
+  }
+}

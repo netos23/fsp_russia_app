@@ -7,6 +7,8 @@ import 'package:fsp_russia_app/screens/rating_screen/rating_screen.dart';
 import 'package:fsp_russia_app/screens/auth/auth_screen.dart';
 import 'package:fsp_russia_app/screens/profile/profile_screen.dart';
 import 'package:fsp_russia_app/screens/contest_detail/contest_detail.dart';
+import 'package:fsp_russia_app/screens/team_screen/team_screen.dart';
+import 'package:fsp_russia_app/screens/registration/registration_screen.dart';
 
 part 'router.gr.dart';
 
@@ -14,6 +16,8 @@ part 'router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
+        AutoRoute(page: ContestDetailRoute.page),
+        AutoRoute(page: TeamRoute.page),
         AutoRoute(
           initial: true,
           page: HomeRoute.page,

@@ -46,6 +46,8 @@ dependencies:
   flutter_markdown: ^0.6.14
   freezed_annotation: ^2.2.0
   flutter_rating_stars: ^1.0.3+4
+  markdown_widget: ^2.1.0
+  flutter_widget_from_html_core: ^0.10.0
 
 dev_dependencies:
   flutter_test:
