@@ -22,6 +22,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: ContestRoute.page,
+                  initial: true,
                 ),
               ],
             ),
@@ -32,6 +33,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: CalendarRoute.page,
+                  initial: true,
                 ),
               ],
             ),
@@ -42,6 +44,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: RatingRoute.page,
+                  initial: true,
                 ),
               ],
             ),
@@ -52,6 +55,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: ProfileRoute.page,
+                  initial: true,
                 ),
               ],
             ),

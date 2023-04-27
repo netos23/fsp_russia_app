@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'color_schemes.g.dart';
 
 class SportApp extends StatelessWidget {
   SportApp({Key? key}) : super(key: key);
@@ -9,14 +12,17 @@ class SportApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xff4132A6),
-          primary: const Color(0xff4132A6),
-          secondary: const Color(0xff4132A6).withOpacity(0.5),
-        ),
+      theme: ThemeData(
         useMaterial3: true,
+        colorScheme: lightColorScheme,
+        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+        textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+      ),
+      themeMode: ThemeMode.dark,
       routerConfig: _appRouter.config(),
     );
   }

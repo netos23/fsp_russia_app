@@ -7,12 +7,9 @@ import 'package:fsp_russia_app/navigation/router.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    return kIsWeb
-        ? const _WebPage()
-        : const _MobilePage();
+    return kIsWeb ? const _WebPage() : const _MobilePage();
   }
 }
 
@@ -24,15 +21,24 @@ class _MobilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-        routes: const [
-          ContestsTab(),
-          CalendarTab(),
-          RatingTab(),
-          ProfileTab(),
-        ],
-        bottomNavigationBuilder: (_, tabsRouter) {
-          return NavigationBar(
+      routes: const [
+        ContestsTab(),
+        CalendarTab(),
+        RatingTab(),
+        ProfileTab(),
+      ],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonBuilder: (_, tabsRouter) {
+        return Container(
+          height: 50,
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          clipBehavior: Clip.hardEdge,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
+          child: NavigationBar(
             selectedIndex: tabsRouter.activeIndex,
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
             onDestinationSelected: tabsRouter.setActiveIndex,
             destinations: const [
               NavigationDestination(
@@ -54,16 +60,15 @@ class _MobilePage extends StatelessWidget {
                 icon: Icon(Icons.person_outline),
               ),
             ],
-          );
-        },
-      );
+          ),
+        );
+      },
+    );
   }
 }
 
 class _WebPage extends StatelessWidget {
   const _WebPage({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +84,7 @@ class _WebPage extends StatelessWidget {
         // we check for active route index by using
         // router.isRouteActive method
         var activeIndex = tabs.indexWhere(
-              (d) => context.router.isRouteActive(d.routeName),
+          (d) => context.router.isRouteActive(d.routeName),
         );
         // there might be no active route until router is mounted
         // so we play safe
@@ -124,4 +129,3 @@ class _WebPage extends StatelessWidget {
     );
   }
 }
-
