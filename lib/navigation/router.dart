@@ -5,6 +5,7 @@ import 'package:fsp_russia_app/screens/home_screen/home_screen.dart';
 import 'package:fsp_russia_app/screens/rating_screen/rating_screen.dart';
 import 'package:fsp_russia_app/screens/auth/auth_screen.dart';
 import 'package:fsp_russia_app/screens/profile/profile_screen.dart';
+import 'package:fsp_russia_app/screens/contest_detail/contest_detail.dart';
 
 part 'router.gr.dart';
 

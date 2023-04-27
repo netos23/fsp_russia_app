@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/screens/contest_screen/contest_screen_presenter.dart';
 import 'package:fsp_russia_app/widgets/contest_card.dart';
+import 'package:provider/provider.dart';
+
+import 'contest_screen_view.dart';
 
 @RoutePage()
 class ContestScreen extends StatelessWidget {
@@ -8,64 +12,8 @@ class ContestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          bottom: const TabBar(
-            isScrollable: true,
-            tabs: [
-              Tab(
-                text: 'Все',
-              ),
-              Tab(
-                text: 'Прошедшие',
-              ),
-              Tab(text: 'Предстоящие'),
-              Tab(text: 'Какие то еще'),
-            ],
-          ),
-        ),
-        body: SafeArea(
-          child: TabBarView(
-            children: [
-              ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                ],
-              ),
-              ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                ],
-              ),
-              ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                ],
-              ),
-              ListView(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    return Provider(create: (BuildContext context) => ContestScreenPresenter(context.router),
+      child: ContestScreenView(),
     );
   }
 }

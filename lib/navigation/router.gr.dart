@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AuthScreen(),
       );
     },
+    ContestDetailRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ContestDetailScreen(),
+      );
+    },
     ContestRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -144,6 +150,20 @@ class AuthRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ContestDetailScreen]
+class ContestDetailRoute extends PageRouteInfo<void> {
+  const ContestDetailRoute({List<PageRouteInfo>? children})
+      : super(
+          ContestDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ContestDetailRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
