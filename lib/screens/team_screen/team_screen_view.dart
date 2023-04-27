@@ -29,7 +29,7 @@ class _TeamScreenViewState extends State<TeamScreenView> {
                           padding: const EdgeInsets.all(16.0),
                           child: ListView(
                             children: [
-                              ListTile(title: const Text('Username приглашает вас в команду team'), subtitle: SizedBox(
+                              ListTile(title: Text('Username приглашает вас в команду team', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),), subtitle: SizedBox(
                                 width: 50,
                                 child: Row(
                                   children: [
@@ -62,7 +62,7 @@ class _TeamScreenViewState extends State<TeamScreenView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              isEditEnabled? TextField() : Text('Название команды'),
+              isEditEnabled? TextField() : Text('Название команды', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               IconButton(onPressed: () {
                 setState(() {
                   isEditEnabled = !isEditEnabled;
@@ -71,7 +71,7 @@ class _TeamScreenViewState extends State<TeamScreenView> {
             ],
           ),
           ListTile(
-              title: const Text('username'),
+              title: Text('username', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               trailing: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -80,7 +80,7 @@ class _TeamScreenViewState extends State<TeamScreenView> {
                 ),
               )),
           ListTile(
-              title: const Text('username'),
+              title: Text('username', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               trailing: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -89,7 +89,7 @@ class _TeamScreenViewState extends State<TeamScreenView> {
                 ),
               )),
           ListTile(
-              title: const Text('username'),
+              title: Text('username', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
               trailing: IconButton(
                 onPressed: () {},
                 icon: const Icon(

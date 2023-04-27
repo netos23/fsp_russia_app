@@ -72,12 +72,12 @@ class _RatingScreenViewState extends State<RatingScreenView> {
                 ),
                 Expanded(
                   child: Container(
-                    child: const Center(child: Text('Raiting')),
+                    child: Center(child: Text('Raiting', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    child: const Center(child: Text('City')),
+                    child: Center(child: Text('City', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                   ),
                 ),
               ],
@@ -103,12 +103,12 @@ class _RatingScreenViewState extends State<RatingScreenView> {
                     ),
                     Expanded(
                       child: Container(
-                        child: const Center(child: Text('test')),
+                        child: Center(child: Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        child: const Center(child: Text('test')),
+                        child: Center(child: Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                       ),
                     ),
                   ],

@@ -62,7 +62,7 @@ class ProfileScreenView extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: ListView(
                               children: [
-                                Text('test'),
+                                Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
                                 TextFormField(),
                               ],
                             ),

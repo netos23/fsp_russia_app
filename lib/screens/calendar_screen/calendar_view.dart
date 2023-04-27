@@ -111,7 +111,7 @@ class _CalendarViewState extends State<CalendarView>
     return ListView.builder(
       itemCount: 25,
       itemBuilder: (BuildContext context, int index) {
-        return ListTile(title: Text('Item $index'));
+        return ListTile(title: Text('Item $index', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),));
       },
     );
   }
