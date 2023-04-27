@@ -11,100 +11,201 @@ class ProfileScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = context.read<ProfileScreenPresenter>();
 
+    var textTheme = Theme.of(context).textTheme;
+    var colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
         body: SafeArea(
       child: Align(
         alignment: Alignment.topCenter,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 16,
-            ),
-            Text('Username',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontSize: 32,
-                    color: Theme.of(context).colorScheme.onBackground)),
-            Text('Имя Фамилия',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontSize: 32,
-                    color: Theme.of(context).colorScheme.onBackground)),
-            Text('2000 рейтинг',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 24,
-                    color: Theme.of(context).colorScheme.onBackground)),
-            const SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child: ElevatedButton(
-                onPressed: presenter.routeToMyTeam,
-                child: const Text('Моя команда'),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      10,
+                    ),
+                  ),
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child: ElevatedButton(
-                onPressed: presenter.routeToMyFavorites,
-                child: const Text('Избранные соревнования'),
+          ),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                expandedHeight: 200,
+                flexibleSpace: Column(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Username',
+                        style: textTheme.bodyLarge?.copyWith(
+                          fontSize: 32,
+                          color: colorScheme.onBackground,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text('Имя Фамилия',
+                          style: textTheme.bodyLarge?.copyWith(
+                              fontSize: 32, color: colorScheme.onBackground)),
+                    ),
+                    Expanded(
+                      child: Text('2000 рейтинг',
+                          style: textTheme.bodyMedium?.copyWith(
+                              fontSize: 24, color: colorScheme.onBackground)),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context, rootNavigator: true)
-                      .push(ModalBottomSheetRoute(
-                    builder: (_) => SizedBox(
-                        height: 600,
-                        child: Scaffold(
-                          body: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: ListView(
-                              children: [
-                                Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),),
-                                TextFormField(),
-                              ],
-                            ),
-                          ),
-                          floatingActionButton: ElevatedButton(
-                            onPressed: () {},
-                            child: Text('Сохранить'),
-                          ),
-                          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-                        )),
-                    isScrollControlled: false,
-                  ));
-                },
-                child: const Text('Редактировать данные'),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                sliver: SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  delegate: SliverChildListDelegate([
+                    ElevatedButton(
+                      onPressed: presenter.routeToMyTeam,
+                      child: const FittedBox(
+                        child: Text(
+                          'Моя команда',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: presenter.routeToMyContests,
+                      child: const FittedBox(
+                        child: Text(
+                          'Мои соревнования',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: presenter.routeToMyFavorites,
+                      child: const Text(
+                        'Избранные\nсоревнования',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const _EditProffile(),
+                  ]),
+                ),
               ),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child:
-                  ElevatedButton(onPressed: () {
-                    launchUrl(Uri.parse('https://fsp-russia.com/'));
-                  }, child: const Text('О нас')),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child:
-                  ElevatedButton(onPressed: () {}, child: const Text('Выйти')),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(kIsWeb ? 8.0 : 0.0),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Удалить аккаунт'),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 20,
+                ),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      ElevatedButton(
+                        onPressed: () {
+                          launchUrl(Uri.parse(
+                            'https://fsp-russia.com/',
+                          ));
+                        },
+                        child: const Text(
+                          'О нас',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: colorScheme.error,
+                        ),
+                        child: const Text(
+                          'Выйти',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: colorScheme.errorContainer,
+                          foregroundColor: colorScheme.error,
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Удалить аккаунт',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-          ],
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 70,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ));
+  }
+}
+
+class _EditProffile extends StatelessWidget {
+  const _EditProffile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
+    var colorScheme = Theme.of(context).colorScheme;
+    return ElevatedButton(
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          useRootNavigator: true,
+          clipBehavior: Clip.hardEdge,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            )
+          ),
+          builder: (_) => SizedBox(
+            height: 600,
+            child: Scaffold(
+              body: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ListView(
+                  children: [
+                    Text(
+                      'test',
+                      style: textTheme.bodyLarge
+                          ?.copyWith(color: colorScheme.onBackground),
+                    ),
+                    TextFormField(),
+                  ],
+                ),
+              ),
+              floatingActionButton: ElevatedButton(
+                onPressed: () {},
+                child: const Text('Сохранить'),
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
+            ),
+          ),
+          isScrollControlled: false,
+        );
+      },
+      child: const Text(
+        'Редактировать данные',
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }

@@ -23,4 +23,8 @@ class ProfileScreenPresenter {
 
   void routeToEditProfile() {
   }
+
+  void routeToMyContests() {
+    router.navigate(const MyContestsRoute());
+  }
 }

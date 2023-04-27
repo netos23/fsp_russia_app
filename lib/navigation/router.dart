@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/screens/analitics_screen/analitics_screen.dart';
 import 'package:fsp_russia_app/screens/calendar_screen/calendar_screen.dart';
 import 'package:fsp_russia_app/screens/contest_screen/contest_screen.dart';
 import 'package:fsp_russia_app/screens/feed_back_screen/feed_back_screen.dart';
 import 'package:fsp_russia_app/screens/home_screen/home_screen.dart';
+import 'package:fsp_russia_app/screens/my_contests_screen/my_contests_screen.dart';
 import 'package:fsp_russia_app/screens/rating_screen/rating_screen.dart';
 import 'package:fsp_russia_app/screens/auth/auth_screen.dart';
 import 'package:fsp_russia_app/screens/profile/profile_screen.dart';
@@ -12,6 +14,7 @@ import 'package:fsp_russia_app/screens/team_screen/team_screen.dart';
 import 'package:fsp_russia_app/screens/registration/registration_screen.dart';
 import 'package:fsp_russia_app/screens/create_contest/create_contest.dart';
 import 'package:fsp_russia_app/screens/favourites/favourites_screen.dart';
+
 
 part 'router.gr.dart';
 
@@ -24,6 +27,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: FeedBackRoute.page),
         AutoRoute(page: CreateContestRoute.page),
         AutoRoute(page: FavouritesRoute.page),
+        AutoRoute(page: MyContestsRoute.page),
+        AutoRoute(page: AnaliticsRoute.page),
         AutoRoute(
           initial: true,
           page: HomeRoute.page,
