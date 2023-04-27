@@ -46,23 +46,23 @@ class ContestScreenView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: ContestCard(),
                   ),

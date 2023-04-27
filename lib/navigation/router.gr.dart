@@ -76,9 +76,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     FeedBackRoute.name: (routeData) {
+      final args = routeData.argsAs<FeedBackRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const FeedBackScreen(),
+        child: FeedBackScreen(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -244,16 +248,40 @@ class ProfileRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FeedBackScreen]
-class FeedBackRoute extends PageRouteInfo<void> {
-  const FeedBackRoute({List<PageRouteInfo>? children})
-      : super(
+class FeedBackRoute extends PageRouteInfo<FeedBackRouteArgs> {
+  FeedBackRoute({
+    Key? key,
+    required String title,
+    List<PageRouteInfo>? children,
+  }) : super(
           FeedBackRoute.name,
+          args: FeedBackRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'FeedBackRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<FeedBackRouteArgs> page =
+      PageInfo<FeedBackRouteArgs>(name);
+}
+
+class FeedBackRouteArgs {
+  const FeedBackRouteArgs({
+    this.key,
+    required this.title,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'FeedBackRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for

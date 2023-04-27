@@ -19,32 +19,46 @@ mixin _$FeedBackForm {
   String get description => throw _privateConstructorUsedError;
   Object? Function(FeedBackModel) get selector =>
       throw _privateConstructorUsedError;
+  FeedBackModel Function(Never) get editCallback =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String description, int? Function(FeedBackModel) selector)
+            String description,
+            int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)
         ratingForm,
-    required TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)
+    required TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)
         textForm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String description, int? Function(FeedBackModel) selector)?
+    TResult? Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult? Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult? Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String description, int? Function(FeedBackModel) selector)?
+    TResult Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
     required TResult orElse(),
   }) =>
@@ -113,7 +127,10 @@ abstract class _$$RatingCopyWith<$Res> implements $FeedBackFormCopyWith<$Res> {
       __$$RatingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String description, int? Function(FeedBackModel) selector});
+  $Res call(
+      {String description,
+      int? Function(FeedBackModel) selector,
+      FeedBackModel Function(double) editCallback});
 }
 
 /// @nodoc
@@ -128,6 +145,7 @@ class __$$RatingCopyWithImpl<$Res>
   $Res call({
     Object? description = null,
     Object? selector = null,
+    Object? editCallback = null,
   }) {
     return _then(_$Rating(
       description: null == description
@@ -138,6 +156,10 @@ class __$$RatingCopyWithImpl<$Res>
           ? _value.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as int? Function(FeedBackModel),
+      editCallback: null == editCallback
+          ? _value.editCallback
+          : editCallback // ignore: cast_nullable_to_non_nullable
+              as FeedBackModel Function(double),
     ));
   }
 }
@@ -145,16 +167,21 @@ class __$$RatingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Rating implements Rating {
-  _$Rating({required this.description, required this.selector});
+  _$Rating(
+      {required this.description,
+      required this.selector,
+      required this.editCallback});
 
   @override
   final String description;
   @override
   final int? Function(FeedBackModel) selector;
+  @override
+  final FeedBackModel Function(double) editCallback;
 
   @override
   String toString() {
-    return 'FeedBackForm.ratingForm(description: $description, selector: $selector)';
+    return 'FeedBackForm.ratingForm(description: $description, selector: $selector, editCallback: $editCallback)';
   }
 
   @override
@@ -165,11 +192,14 @@ class _$Rating implements Rating {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.selector, selector) ||
-                other.selector == selector));
+                other.selector == selector) &&
+            (identical(other.editCallback, editCallback) ||
+                other.editCallback == editCallback));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, description, selector);
+  int get hashCode =>
+      Object.hash(runtimeType, description, selector, editCallback);
 
   @JsonKey(ignore: true)
   @override
@@ -181,40 +211,52 @@ class _$Rating implements Rating {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String description, int? Function(FeedBackModel) selector)
+            String description,
+            int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)
         ratingForm,
-    required TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)
+    required TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)
         textForm,
   }) {
-    return ratingForm(description, selector);
+    return ratingForm(description, selector, editCallback);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String description, int? Function(FeedBackModel) selector)?
+    TResult? Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult? Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult? Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
   }) {
-    return ratingForm?.call(description, selector);
+    return ratingForm?.call(description, selector, editCallback);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String description, int? Function(FeedBackModel) selector)?
+    TResult Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
     required TResult orElse(),
   }) {
     if (ratingForm != null) {
-      return ratingForm(description, selector);
+      return ratingForm(description, selector, editCallback);
     }
     return orElse();
   }
@@ -254,12 +296,15 @@ class _$Rating implements Rating {
 abstract class Rating implements FeedBackForm {
   factory Rating(
       {required final String description,
-      required final int? Function(FeedBackModel) selector}) = _$Rating;
+      required final int? Function(FeedBackModel) selector,
+      required final FeedBackModel Function(double) editCallback}) = _$Rating;
 
   @override
   String get description;
   @override
   int? Function(FeedBackModel) get selector;
+  @override
+  FeedBackModel Function(double) get editCallback;
   @override
   @JsonKey(ignore: true)
   _$$RatingCopyWith<_$Rating> get copyWith =>
@@ -277,7 +322,8 @@ abstract class _$$TextFormCopyWith<$Res>
   $Res call(
       {String description,
       int length,
-      String? Function(FeedBackModel) selector});
+      String? Function(FeedBackModel) selector,
+      FeedBackModel Function(String) editCallback});
 }
 
 /// @nodoc
@@ -293,6 +339,7 @@ class __$$TextFormCopyWithImpl<$Res>
     Object? description = null,
     Object? length = null,
     Object? selector = null,
+    Object? editCallback = null,
   }) {
     return _then(_$TextForm(
       description: null == description
@@ -307,6 +354,10 @@ class __$$TextFormCopyWithImpl<$Res>
           ? _value.selector
           : selector // ignore: cast_nullable_to_non_nullable
               as String? Function(FeedBackModel),
+      editCallback: null == editCallback
+          ? _value.editCallback
+          : editCallback // ignore: cast_nullable_to_non_nullable
+              as FeedBackModel Function(String),
     ));
   }
 }
@@ -317,7 +368,8 @@ class _$TextForm implements TextForm {
   _$TextForm(
       {required this.description,
       required this.length,
-      required this.selector});
+      required this.selector,
+      required this.editCallback});
 
   @override
   final String description;
@@ -325,10 +377,12 @@ class _$TextForm implements TextForm {
   final int length;
   @override
   final String? Function(FeedBackModel) selector;
+  @override
+  final FeedBackModel Function(String) editCallback;
 
   @override
   String toString() {
-    return 'FeedBackForm.textForm(description: $description, length: $length, selector: $selector)';
+    return 'FeedBackForm.textForm(description: $description, length: $length, selector: $selector, editCallback: $editCallback)';
   }
 
   @override
@@ -340,11 +394,14 @@ class _$TextForm implements TextForm {
                 other.description == description) &&
             (identical(other.length, length) || other.length == length) &&
             (identical(other.selector, selector) ||
-                other.selector == selector));
+                other.selector == selector) &&
+            (identical(other.editCallback, editCallback) ||
+                other.editCallback == editCallback));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, description, length, selector);
+  int get hashCode =>
+      Object.hash(runtimeType, description, length, selector, editCallback);
 
   @JsonKey(ignore: true)
   @override
@@ -356,40 +413,52 @@ class _$TextForm implements TextForm {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String description, int? Function(FeedBackModel) selector)
+            String description,
+            int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)
         ratingForm,
-    required TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)
+    required TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)
         textForm,
   }) {
-    return textForm(description, length, selector);
+    return textForm(description, length, selector, editCallback);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String description, int? Function(FeedBackModel) selector)?
+    TResult? Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult? Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult? Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
   }) {
-    return textForm?.call(description, length, selector);
+    return textForm?.call(description, length, selector, editCallback);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String description, int? Function(FeedBackModel) selector)?
+    TResult Function(String description, int? Function(FeedBackModel) selector,
+            FeedBackModel Function(double) editCallback)?
         ratingForm,
-    TResult Function(String description, int length,
-            String? Function(FeedBackModel) selector)?
+    TResult Function(
+            String description,
+            int length,
+            String? Function(FeedBackModel) selector,
+            FeedBackModel Function(String) editCallback)?
         textForm,
     required TResult orElse(),
   }) {
     if (textForm != null) {
-      return textForm(description, length, selector);
+      return textForm(description, length, selector, editCallback);
     }
     return orElse();
   }
@@ -430,13 +499,16 @@ abstract class TextForm implements FeedBackForm {
   factory TextForm(
       {required final String description,
       required final int length,
-      required final String? Function(FeedBackModel) selector}) = _$TextForm;
+      required final String? Function(FeedBackModel) selector,
+      required final FeedBackModel Function(String) editCallback}) = _$TextForm;
 
   @override
   String get description;
   int get length;
   @override
   String? Function(FeedBackModel) get selector;
+  @override
+  FeedBackModel Function(String) get editCallback;
   @override
   @JsonKey(ignore: true)
   _$$TextFormCopyWith<_$TextForm> get copyWith =>
