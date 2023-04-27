@@ -20,4 +20,7 @@ class ProfileScreenPresenter {
   void routeToMyFavorites() {
 
   }
+
+  void routeToEditProfile() {
+  }
 }

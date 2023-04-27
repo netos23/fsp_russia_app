@@ -93,6 +93,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const TeamScreen(),
       );
     },
+    CreateContestRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateContestScreen(),
+      );
+    },
   };
 }
 
@@ -274,6 +280,20 @@ class TeamRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'TeamRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateContestScreen]
+class CreateContestRoute extends PageRouteInfo<void> {
+  const CreateContestRoute({List<PageRouteInfo>? children})
+      : super(
+          CreateContestRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateContestRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
