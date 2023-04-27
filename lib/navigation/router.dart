@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fsp_russia_app/screens/calendar_screen/calendar_screen.dart';
 import 'package:fsp_russia_app/screens/contest_screen/contest_screen.dart';
 import 'package:fsp_russia_app/screens/home_screen/home_screen.dart';
-import 'package:fsp_russia_app/screens/profile_screen/proffile_screen.dart';
 import 'package:fsp_russia_app/screens/rating_screen/rating_screen.dart';
+import 'package:fsp_russia_app/screens/auth/auth_screen.dart';
+import 'package:fsp_russia_app/screens/profile/profile_screen.dart';
 
 part 'router.gr.dart';
 
@@ -51,6 +52,7 @@ class AppRouter extends _$AppRouter {
               maintainState: true,
               children: [
                 AutoRoute(
+                  initial: true,
                   page: ProfileRoute.page,
                 ),
               ],
