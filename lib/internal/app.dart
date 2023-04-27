@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final Color primaryColor = Color(0xFF0253FC);
 final Color darkPrimaryColor = Color(0xFF01071D);
@@ -29,6 +30,7 @@ class SportApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: primaryColor,
         primaryColorDark: darkPrimaryColor,
+        fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
         accentColor: accentColor,
         backgroundColor: backgroundColor,
         scaffoldBackgroundColor: secondaryBackgroundColor,
@@ -41,11 +43,6 @@ class SportApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        textTheme: TextTheme(
-          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Roboto'),
         ),
         buttonTheme: ButtonThemeData(
           buttonColor: accentColor,
