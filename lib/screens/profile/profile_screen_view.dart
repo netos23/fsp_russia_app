@@ -302,7 +302,7 @@ class _EditProffile extends StatelessWidget {
                   ],
                 ),
               ),
-              floatingActionButton: ElevatedButton(
+              floatingActionButton: OutlinedButton(
                 onPressed: presenter.save,
                 child: const Text('Сохранить'),
               ),
