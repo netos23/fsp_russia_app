@@ -1,5 +1,10 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/domain/auth_service.dart';
+import 'package:fsp_russia_app/entity/user_model.dart';
 import 'package:fsp_russia_app/widgets/contest_card.dart';
 import 'package:provider/provider.dart';
 
@@ -11,106 +16,224 @@ class ContestScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = context.read<ContestScreenPresenter>();
+    final textTheme = Theme.of(context).textTheme;
+    final colorTheme = Theme.of(context).colorScheme;
 
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          bottom: const TabBar(
-            isScrollable: true,
-            tabs: [
-              Tab(
-                text: 'Все',
-              ),
-              Tab(
-                text: 'Прошедшие',
-              ),
-              Tab(text: 'Предстоящие'),
-              Tab(text: 'Какие то еще'),
-            ],
-          ),
-        ),
-        body: Stack(
-          children: [
-            TabBarView(
-            children: [
-              ListView(
+    return ValueListenableBuilder(
+      valueListenable: presenter.contests,
+      builder: (context, contests, _) {
+        if (contests == null) {
+          return Center(
+            child: !kIsWeb && Platform.isIOS
+                ? const CupertinoActivityIndicator()
+                : const CircularProgressIndicator(),
+          );
+        }
+
+        if (contests.isEmpty) {
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Hero(
-                      tag: 1,
-                      child: Material(
-                        child: ContestCard(
-                          onTap: presenter.navigateToDetailCard,
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'К сожалению пока нет ни одного соревнования. '
+                        'Заходите позже они обязательно появиться.',
+                        textAlign: TextAlign.center,
+                        style: textTheme.bodyMedium?.copyWith(
+                          fontSize: 32,
+                          color: colorTheme.onBackground,
                         ),
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(),
-                  ),
-                ],
-              ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30.0),
+                      child: Image.asset('assets/figure-288d762731.png'),
                     ),
                   ),
                 ],
               ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
-                    ),
+            ),
+          );
+        }
+
+        final archive = presenter.getArchived(contests);
+        final actual = presenter.getActual(contests);
+        final future = presenter.getFuture(contests);
+
+        return DefaultTabController(
+          length: 4,
+          child: Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 0,
+              bottom: const TabBar(
+                isScrollable: true,
+                tabs: [
+                  Tab(
+                    text: 'Все',
                   ),
+                  Tab(
+                    text: 'Прошедшие',
+                  ),
+                  Tab(text: 'Предстоящие'),
+                  Tab(text: 'Сложные'),
                 ],
               ),
-              ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ContestCard(
-                      onTap: presenter.navigateToDetailCard,
+            ),
+            body: Stack(
+              children: [
+                TabBarView(
+                  children: [
+                    archive.isEmpty
+                        ? Center(
+                            child: Text(
+                              'К сожалению пока нет ни одного соревнования. '
+                              'Заходите позже они обязательно появиться.',
+                              style: textTheme.headlineLarge?.copyWith(
+                                fontSize: 32,
+                                color: colorTheme.onBackground,
+                              ),
+                            ),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 500,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                            ),
+                            itemCount: archive.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Hero(
+                                  tag: 'ct0-${archive[index].name}',
+                                  child: Material(
+                                    child: ContestCard(
+                                      item: actual[index],
+                                      onTap: presenter.navigateToDetailCard,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                    actual.isEmpty
+                        ? Center(
+                            child: Text(
+                              'К сожалению пока нет ни одного соревнования. '
+                              'Заходите позже они обязательно появиться.',
+                              style: textTheme.headlineLarge?.copyWith(
+                                fontSize: 32,
+                                color: colorTheme.onBackground,
+                              ),
+                            ),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 500,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                            ),
+                            itemCount: actual.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Hero(
+                                  tag: 'ct1-${actual[index].name}',
+                                  child: Material(
+                                    child: ContestCard(
+                                      item: actual[index],
+                                      onTap: presenter.navigateToDetailCard,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                    future.isEmpty
+                        ? Center(
+                            child: Text(
+                              'К сожалению пока нет ни одного соревнования. '
+                              'Заходите позже они обязательно появиться.',
+                              style: textTheme.headlineLarge?.copyWith(
+                                fontSize: 32,
+                                color: colorTheme.onBackground,
+                              ),
+                            ),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                              maxCrossAxisExtent: 500,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                            ),
+                            itemCount: future.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Hero(
+                                  tag: 'ct2-${future[index].name}',
+                                  child: Material(
+                                    child: ContestCard(
+                                      item: future[index],
+                                      onTap: presenter.navigateToDetailCard,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                    Center(
+                      child: Text(
+                        'К сожалению пока нет ни одного соревнования. '
+                        'Заходите позже они обязательно появиться.',
+                        style: textTheme.headlineLarge?.copyWith(
+                          fontSize: 32,
+                          color: colorTheme.onBackground,
+                        ),
+                      ),
                     ),
+                  ],
+                ),
+                Positioned(
+                  right: 16.0,
+                  bottom: kIsWeb ? 16.0 : 120.0,
+                  child: AnimatedBuilder(
+                    animation: AuthService(),
+                    builder: (context, _) {
+                      return FutureBuilder(
+                        future: presenter.getUserModel(),
+                        builder: (context, snap) {
+                          final data = snap.data;
+
+                          if (data == null ||
+                              !data.type.contains(UserRole.fsp.index) ||
+                              !data.type.contains(UserRole.sponsor.index)) {
+                            return Container();
+                          }
+
+                          return FloatingActionButton(
+                            onPressed: presenter.routeToCreateContest,
+                            child: const Icon(Icons.add),
+                          );
+                        },
+                      );
+                    },
                   ),
-                ],
-              ),
-            ],
-          ),Positioned(
-                right: 16.0,
-                bottom: kIsWeb? 16.0: 120.0,
-                child: FloatingActionButton(
-                  child: Icon(Icons.add),
-                  onPressed: presenter.routeToCreateContest,
-                ))
-          ],
-        ),
-      ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

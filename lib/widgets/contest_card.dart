@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/domain/contest_service.dart';
+import 'package:fsp_russia_app/entity/contest_model.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ContestCard extends StatelessWidget {
@@ -6,19 +8,23 @@ class ContestCard extends StatelessWidget {
   final VoidCallback? onEdit;
   final VoidCallback? onAnalitics;
   final VoidCallback? onTapToFavorite;
-  final bool isInFavorite;
 
   const ContestCard({
-    this.isInFavorite = false,
     this.onTap,
     this.onTapToFavorite,
     Key? key,
     this.onEdit,
     this.onAnalitics,
+    required,
+    required this.item,
   }) : super(key: key);
+
+  final ContestModel item;
 
   @override
   Widget build(BuildContext context) {
+    final contest = ContestService();
+    final isInFavorite = contest.favourites.contains(item);
     final colorSheme = Theme.of(context).colorScheme;
     return InkWell(
       onTap: onTap,
@@ -147,7 +153,15 @@ class ContestCard extends StatelessWidget {
             top: 4,
             right: 4,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (isInFavorite) {
+                  contest.favourites.remove(item);
+                  contest.notifyFavourites();
+                } else {
+                  contest.favourites.add(item);
+                  contest.notifyFavourites();
+                }
+              },
               icon: Icon(
                 isInFavorite ? Icons.bookmark : Icons.bookmark_border,
                 color: Colors.amber,

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:markdown/markdown.dart' hide Text;
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:provider/provider.dart';
 
 import 'contest_detail_presenter.dart';
@@ -25,7 +25,9 @@ class ContestDetailView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.rate_review_outlined),
-              SizedBox(width: 10,),
+              SizedBox(
+                width: 10,
+              ),
               FittedBox(
                 child: Text('Оставить отзыв'),
               ),
@@ -58,8 +60,8 @@ class ContestDetailView extends StatelessWidget {
             delegate: SliverChildListDelegate([
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: HtmlWidget(
-                    markdownToHtml('''---
+                child: Markdown(
+                  data: '''---
 __Advertisement :)__
 
 - __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
@@ -304,8 +306,7 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
-'''),
-                  textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),
+''',
                 ),
               ),
             ]),

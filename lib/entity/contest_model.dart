@@ -18,6 +18,8 @@ class ContestModel with _$ContestModel {
     required bool feeding,
     required String description,
     required int difficulty,
+    @JsonKey(includeFromJson: false, includeToJson: false) DateTime? begin,
+    @JsonKey(includeFromJson: false, includeToJson: false) DateTime? end,
   }) = _ContestModel;
 
   factory ContestModel.fromJson(Map<String, dynamic> json) =>

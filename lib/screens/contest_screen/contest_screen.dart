@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/api/api_clent.dart';
 import 'package:fsp_russia_app/screens/contest_screen/contest_screen_presenter.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,12 @@ class ContestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(create: (BuildContext context) => ContestScreenPresenter(context.router),
+    return Provider(
+      create: (BuildContext context) => ContestScreenPresenter(
+        context.router,
+        ApiClient(context.read())
+      )..init(),
+      dispose: (_, p) => p.dispose(),
       child: const ContestScreenView(),
     );
   }

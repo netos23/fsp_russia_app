@@ -36,6 +36,10 @@ mixin _$ContestModel {
   bool get feeding => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get difficulty => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  DateTime? get begin => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  DateTime? get end => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +64,9 @@ abstract class $ContestModelCopyWith<$Res> {
       @JsonKey(name: 'city_id') String cityId,
       bool feeding,
       String description,
-      int difficulty});
+      int difficulty,
+      @JsonKey(includeFromJson: false, includeToJson: false) DateTime? begin,
+      @JsonKey(includeFromJson: false, includeToJson: false) DateTime? end});
 }
 
 /// @nodoc
@@ -87,6 +93,8 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
+    Object? begin = freezed,
+    Object? end = freezed,
   }) {
     return _then(_value.copyWith(
       active: null == active
@@ -133,6 +141,14 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      begin: freezed == begin
+          ? _value.begin
+          : begin // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: freezed == end
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -156,7 +172,9 @@ abstract class _$$_ContestModelCopyWith<$Res>
       @JsonKey(name: 'city_id') String cityId,
       bool feeding,
       String description,
-      int difficulty});
+      int difficulty,
+      @JsonKey(includeFromJson: false, includeToJson: false) DateTime? begin,
+      @JsonKey(includeFromJson: false, includeToJson: false) DateTime? end});
 }
 
 /// @nodoc
@@ -181,6 +199,8 @@ class __$$_ContestModelCopyWithImpl<$Res>
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
+    Object? begin = freezed,
+    Object? end = freezed,
   }) {
     return _then(_$_ContestModel(
       active: null == active
@@ -227,6 +247,14 @@ class __$$_ContestModelCopyWithImpl<$Res>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      begin: freezed == begin
+          ? _value.begin
+          : begin // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      end: freezed == end
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -245,7 +273,9 @@ class _$_ContestModel implements _ContestModel {
       @JsonKey(name: 'city_id') required this.cityId,
       required this.feeding,
       required this.description,
-      required this.difficulty});
+      required this.difficulty,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.begin,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.end});
 
   factory _$_ContestModel.fromJson(Map<String, dynamic> json) =>
       _$$_ContestModelFromJson(json);
@@ -277,10 +307,16 @@ class _$_ContestModel implements _ContestModel {
   final String description;
   @override
   final int difficulty;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final DateTime? begin;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final DateTime? end;
 
   @override
   String toString() {
-    return 'ContestModel(active: $active, employer: $employer, organizerId: $organizerId, name: $name, datetimeStart: $datetimeStart, imagePath: $imagePath, datetimeEnd: $datetimeEnd, cityId: $cityId, feeding: $feeding, description: $description, difficulty: $difficulty)';
+    return 'ContestModel(active: $active, employer: $employer, organizerId: $organizerId, name: $name, datetimeStart: $datetimeStart, imagePath: $imagePath, datetimeEnd: $datetimeEnd, cityId: $cityId, feeding: $feeding, description: $description, difficulty: $difficulty, begin: $begin, end: $end)';
   }
 
   @override
@@ -305,7 +341,9 @@ class _$_ContestModel implements _ContestModel {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.difficulty, difficulty) ||
-                other.difficulty == difficulty));
+                other.difficulty == difficulty) &&
+            (identical(other.begin, begin) || other.begin == begin) &&
+            (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
@@ -322,7 +360,9 @@ class _$_ContestModel implements _ContestModel {
       cityId,
       feeding,
       description,
-      difficulty);
+      difficulty,
+      begin,
+      end);
 
   @JsonKey(ignore: true)
   @override
@@ -342,15 +382,24 @@ abstract class _ContestModel implements ContestModel {
   factory _ContestModel(
       {required final bool active,
       required final String employer,
-      @JsonKey(name: 'organizer_id') required final int organizerId,
+      @JsonKey(name: 'organizer_id')
+          required final int organizerId,
       required final String name,
-      @JsonKey(name: 'datetime_start') required final String datetimeStart,
-      @JsonKey(name: 'image_path') required final String imagePath,
-      @JsonKey(name: 'datetime_end') required final String datetimeEnd,
-      @JsonKey(name: 'city_id') required final String cityId,
+      @JsonKey(name: 'datetime_start')
+          required final String datetimeStart,
+      @JsonKey(name: 'image_path')
+          required final String imagePath,
+      @JsonKey(name: 'datetime_end')
+          required final String datetimeEnd,
+      @JsonKey(name: 'city_id')
+          required final String cityId,
       required final bool feeding,
       required final String description,
-      required final int difficulty}) = _$_ContestModel;
+      required final int difficulty,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          final DateTime? begin,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          final DateTime? end}) = _$_ContestModel;
 
   factory _ContestModel.fromJson(Map<String, dynamic> json) =
       _$_ContestModel.fromJson;
@@ -382,6 +431,12 @@ abstract class _ContestModel implements ContestModel {
   String get description;
   @override
   int get difficulty;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  DateTime? get begin;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  DateTime? get end;
   @override
   @JsonKey(ignore: true)
   _$$_ContestModelCopyWith<_$_ContestModel> get copyWith =>

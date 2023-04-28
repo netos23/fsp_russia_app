@@ -24,51 +24,64 @@ class AuthScreenView extends StatelessWidget {
             FocusManager.instance.primaryFocus?.unfocus();
           },
         ),
-        Container(
-          constraints: const BoxConstraints.expand(
-            width: 500,
-          ),
-          margin: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'email / username',
+        Positioned.fill(
+          child: Center(
+            child: Container(
+              constraints: const BoxConstraints.expand(
+                width: 300,
+              ),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Center(
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          hintText: 'email / username',
+                        ),
+                        controller: presenter.emailController,
+                        style: textTheme.bodyLarge?.copyWith(
+                          color: colorTheme.primary,
+                        ),
+                      ),
+                    ),
                   ),
-                  controller: presenter.emailController,
-                  style: textTheme.bodyLarge?.copyWith(
-                    color: colorTheme.primary,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Center(
+                      child: TextField(
+                        controller: presenter.paswwordController,
+                        obscureText: true,
+                        decoration: const InputDecoration(hintText: 'Пароль'),
+                        style: textTheme.bodyLarge?.copyWith(
+                          color: colorTheme.primary,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextField(
-                  controller: presenter.paswwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(hintText: 'Пароль'),
-                  style: textTheme.bodyLarge?.copyWith(
-                    color: colorTheme.primary,
+                  const SizedBox(
+                    height: 50,
                   ),
-                ),
+                  OutlinedButton(
+                    onPressed: presenter.auth,
+                    child: const Text('Войти'),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30.0),
+                      child: Image.asset(
+                        'assets/figure-288d762731.png',
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              OutlinedButton(
-                onPressed: presenter.auth,
-                child: const Text('Войти'),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: Image.asset('assets/figure-288d762731.png'),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ]),

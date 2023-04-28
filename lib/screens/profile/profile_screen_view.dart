@@ -193,36 +193,48 @@ class _ProfileView extends StatelessWidget {
                   sliver: SliverList(
                     delegate: SliverChildListDelegate(
                       [
-                        ElevatedButton(
-                          onPressed: () {
-                            launchUrl(Uri.parse(
-                              'https://fsp-russia.com/',
-                            ));
-                          },
-                          child: const Text(
-                            'О нас',
-                            textAlign: TextAlign.center,
+                        Container(
+                          width: 400,
+                          margin: const EdgeInsets.symmetric(vertical: 16),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              launchUrl(Uri.parse(
+                                'https://fsp-russia.com/',
+                              ));
+                            },
+                            child: const Text(
+                              'О нас',
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: presenter.logout,
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: colorScheme.error,
-                          ),
-                          child: const Text(
-                            'Выйти',
-                            textAlign: TextAlign.center,
+                        Container(
+                          width: 400,
+                          margin: const EdgeInsets.symmetric(vertical: 16),
+                          child: ElevatedButton(
+                            onPressed: presenter.logout,
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: colorScheme.error,
+                            ),
+                            child: const Text(
+                              'Выйти',
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: colorScheme.errorContainer,
-                            foregroundColor: colorScheme.error,
-                          ),
-                          onPressed: presenter.logout,
-                          child: const Text(
-                            'Удалить аккаунт',
-                            textAlign: TextAlign.center,
+                        Container(
+                          width: 400,
+                          margin: const EdgeInsets.symmetric(vertical: 16),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: colorScheme.errorContainer,
+                              foregroundColor: colorScheme.error,
+                            ),
+                            onPressed: presenter.logout,
+                            child: const Text(
+                              'Удалить аккаунт',
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                       ],

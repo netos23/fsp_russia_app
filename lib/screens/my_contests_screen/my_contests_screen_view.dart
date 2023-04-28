@@ -11,6 +11,8 @@ class MyContestsScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final presenter = context.read<MyContestsScreenPresenter>();
+    final textTheme = Theme.of(context).textTheme;
+    final colorTheme = Theme.of(context).colorScheme;
 
     return DefaultTabController(
       length: 4,
@@ -35,81 +37,56 @@ class MyContestsScreenView extends StatelessWidget {
           children: [
             TabBarView(
               children: [
-                ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Hero(
-                        tag: 1,
-                        child: Material(
-                          child: ContestCard(
-                            onTap: presenter.navigateToDetailCard,
-                            onEdit: presenter.navigateToEdit,
-                            onAnalitics: presenter.navigateToAnalitics,
-                          ),
-                        ),
-                      ),
+                Center(
+                  child: Text(
+                    'К сожалению пока нет ни одного соревнования. '
+                    'Заходите позже они обязательно появиться.',
+                    style: textTheme.headlineLarge?.copyWith(
+                      fontSize: 32,
+                      color: colorTheme.onBackground,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(),
-                    ),
-                  ],
+                  ),
                 ),
-                ListView(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(
-                        onTap: presenter.navigateToDetailCard,
-                      ),
+                Center(
+                  child: Text(
+                    'К сожалению пока нет ни одного соревнования. '
+                    'Заходите позже они обязательно появиться.',
+                    style: textTheme.headlineLarge?.copyWith(
+                      fontSize: 32,
+                      color: colorTheme.onBackground,
                     ),
-                  ],
+                  ),
                 ),
-                ListView(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(
-                        onTap: presenter.navigateToDetailCard,
-                      ),
+                Center(
+                  child: Text(
+                    'К сожалению пока нет ни одного соревнования. '
+                    'Заходите позже они обязательно появиться.',
+                    style: textTheme.headlineLarge?.copyWith(
+                      fontSize: 32,
+                      color: colorTheme.onBackground,
                     ),
-                  ],
+                  ),
                 ),
-                ListView(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: ContestCard(
-                        onTap: presenter.navigateToDetailCard,
-                      ),
+                Center(
+                  child: Text(
+                    'К сожалению пока нет ни одного соревнования. '
+                    'Заходите позже они обязательно появиться.',
+                    style: textTheme.headlineLarge?.copyWith(
+                      fontSize: 32,
+                      color: colorTheme.onBackground,
                     ),
-                  ],
+                  ),
                 ),
               ],
-            ),Positioned(
-                right: 16.0,
-                bottom: kIsWeb? 16.0: 120.0,
-                child: FloatingActionButton(
-                  child: Icon(Icons.add),
-                  onPressed: presenter.routeToCreateContest,
-                ))
+            ),
+            Positioned(
+              right: 16.0,
+              bottom: kIsWeb ? 16.0 : 120.0,
+              child: FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: presenter.routeToCreateContest,
+              ),
+            )
           ],
         ),
       ),
