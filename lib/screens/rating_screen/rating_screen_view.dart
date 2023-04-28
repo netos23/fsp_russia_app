@@ -66,18 +66,18 @@ class _RatingScreenViewState extends State<RatingScreenView> {
                     child: Center(
                         child: TextButton(
                       onPressed: () {},
-                      child: const Text('Username'),
+                      child: const Text('Имя'),
                     )),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    child: Center(child: Text('Raiting', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
+                    child: Center(child: Text('Рейтинг', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    child: Center(child: Text('City', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
+                    child: Center(child: Text('Город', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                   ),
                 ),
               ],
@@ -87,7 +87,8 @@ class _RatingScreenViewState extends State<RatingScreenView> {
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           sliver: SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
+            delegate: SliverChildBuilderDelegate(
+                    (context, index) {
               if (index.isEven) {
                 return Row(
                   mainAxisSize: MainAxisSize.max,
@@ -97,25 +98,26 @@ class _RatingScreenViewState extends State<RatingScreenView> {
                         child: Center(
                             child: TextButton(
                           onPressed: presenter.toUserProfile,
-                          child: const Text('username'),
+                          child: Text(presenter.data[index][0]),
                         )),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        child: Center(child: Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
+                        child: Center(child: Text(presenter.data[index][1], style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        child: Center(child: Text('test', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
+                        child: Center(child: Text(presenter.data[index][2], style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onBackground),)),
                       ),
                     ),
                   ],
                 );
               }
               return const Divider();
-            }),
+            },
+            childCount: 10),
           ),
         ),
       ],
