@@ -38,7 +38,7 @@ class _SportAppState extends State<SportApp> {
           create:  (_) {
             var dio = Dio();
             dio.options
-              ..baseUrl = 'https://410b-188-254-110-157.ngrok-free.app/'
+              ..baseUrl = 'https://690a-94-25-60-188.ngrok-free.app/'
               ..connectTimeout = timeout
               ..receiveTimeout = timeout
               ..sendTimeout = timeout;

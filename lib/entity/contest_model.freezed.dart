@@ -23,7 +23,7 @@ mixin _$ContestModel {
   bool get active => throw _privateConstructorUsedError;
   String get employer => throw _privateConstructorUsedError;
   @JsonKey(name: 'organizer_id')
-  int get organizerId => throw _privateConstructorUsedError;
+  int? get organizerId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'datetime_start')
   String get datetimeStart => throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$ContestModel {
   @JsonKey(name: 'datetime_end')
   String get datetimeEnd => throw _privateConstructorUsedError;
   @JsonKey(name: 'city_id')
-  String get cityId => throw _privateConstructorUsedError;
+  String? get cityId => throw _privateConstructorUsedError;
   bool get feeding => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get difficulty => throw _privateConstructorUsedError;
@@ -56,12 +56,12 @@ abstract class $ContestModelCopyWith<$Res> {
   $Res call(
       {bool active,
       String employer,
-      @JsonKey(name: 'organizer_id') int organizerId,
+      @JsonKey(name: 'organizer_id') int? organizerId,
       String name,
       @JsonKey(name: 'datetime_start') String datetimeStart,
       @JsonKey(name: 'image_path') String imagePath,
       @JsonKey(name: 'datetime_end') String datetimeEnd,
-      @JsonKey(name: 'city_id') String cityId,
+      @JsonKey(name: 'city_id') String? cityId,
       bool feeding,
       String description,
       int difficulty,
@@ -84,12 +84,12 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
   $Res call({
     Object? active = null,
     Object? employer = null,
-    Object? organizerId = null,
+    Object? organizerId = freezed,
     Object? name = null,
     Object? datetimeStart = null,
     Object? imagePath = null,
     Object? datetimeEnd = null,
-    Object? cityId = null,
+    Object? cityId = freezed,
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
@@ -105,10 +105,10 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
           ? _value.employer
           : employer // ignore: cast_nullable_to_non_nullable
               as String,
-      organizerId: null == organizerId
+      organizerId: freezed == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -125,10 +125,10 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
           ? _value.datetimeEnd
           : datetimeEnd // ignore: cast_nullable_to_non_nullable
               as String,
-      cityId: null == cityId
+      cityId: freezed == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       feeding: null == feeding
           ? _value.feeding
           : feeding // ignore: cast_nullable_to_non_nullable
@@ -164,12 +164,12 @@ abstract class _$$_ContestModelCopyWith<$Res>
   $Res call(
       {bool active,
       String employer,
-      @JsonKey(name: 'organizer_id') int organizerId,
+      @JsonKey(name: 'organizer_id') int? organizerId,
       String name,
       @JsonKey(name: 'datetime_start') String datetimeStart,
       @JsonKey(name: 'image_path') String imagePath,
       @JsonKey(name: 'datetime_end') String datetimeEnd,
-      @JsonKey(name: 'city_id') String cityId,
+      @JsonKey(name: 'city_id') String? cityId,
       bool feeding,
       String description,
       int difficulty,
@@ -190,12 +190,12 @@ class __$$_ContestModelCopyWithImpl<$Res>
   $Res call({
     Object? active = null,
     Object? employer = null,
-    Object? organizerId = null,
+    Object? organizerId = freezed,
     Object? name = null,
     Object? datetimeStart = null,
     Object? imagePath = null,
     Object? datetimeEnd = null,
-    Object? cityId = null,
+    Object? cityId = freezed,
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
@@ -211,10 +211,10 @@ class __$$_ContestModelCopyWithImpl<$Res>
           ? _value.employer
           : employer // ignore: cast_nullable_to_non_nullable
               as String,
-      organizerId: null == organizerId
+      organizerId: freezed == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -231,10 +231,10 @@ class __$$_ContestModelCopyWithImpl<$Res>
           ? _value.datetimeEnd
           : datetimeEnd // ignore: cast_nullable_to_non_nullable
               as String,
-      cityId: null == cityId
+      cityId: freezed == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       feeding: null == feeding
           ? _value.feeding
           : feeding // ignore: cast_nullable_to_non_nullable
@@ -265,7 +265,7 @@ class _$_ContestModel implements _ContestModel {
   _$_ContestModel(
       {required this.active,
       required this.employer,
-      @JsonKey(name: 'organizer_id') required this.organizerId,
+      @JsonKey(name: 'organizer_id') this.organizerId,
       required this.name,
       @JsonKey(name: 'datetime_start') required this.datetimeStart,
       @JsonKey(name: 'image_path') required this.imagePath,
@@ -286,7 +286,7 @@ class _$_ContestModel implements _ContestModel {
   final String employer;
   @override
   @JsonKey(name: 'organizer_id')
-  final int organizerId;
+  final int? organizerId;
   @override
   final String name;
   @override
@@ -300,7 +300,7 @@ class _$_ContestModel implements _ContestModel {
   final String datetimeEnd;
   @override
   @JsonKey(name: 'city_id')
-  final String cityId;
+  final String? cityId;
   @override
   final bool feeding;
   @override
@@ -383,7 +383,7 @@ abstract class _ContestModel implements ContestModel {
       {required final bool active,
       required final String employer,
       @JsonKey(name: 'organizer_id')
-          required final int organizerId,
+          final int? organizerId,
       required final String name,
       @JsonKey(name: 'datetime_start')
           required final String datetimeStart,
@@ -392,7 +392,7 @@ abstract class _ContestModel implements ContestModel {
       @JsonKey(name: 'datetime_end')
           required final String datetimeEnd,
       @JsonKey(name: 'city_id')
-          required final String cityId,
+          required final String? cityId,
       required final bool feeding,
       required final String description,
       required final int difficulty,
@@ -410,7 +410,7 @@ abstract class _ContestModel implements ContestModel {
   String get employer;
   @override
   @JsonKey(name: 'organizer_id')
-  int get organizerId;
+  int? get organizerId;
   @override
   String get name;
   @override
@@ -424,7 +424,7 @@ abstract class _ContestModel implements ContestModel {
   String get datetimeEnd;
   @override
   @JsonKey(name: 'city_id')
-  String get cityId;
+  String? get cityId;
   @override
   bool get feeding;
   @override

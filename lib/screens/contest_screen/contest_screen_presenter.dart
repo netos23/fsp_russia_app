@@ -18,8 +18,6 @@ class ContestScreenPresenter {
 
   ContestScreenPresenter(this.router, this.apiClient);
   final auth = AuthService();
-  ContestScreenPresenter(this.router);
-
   void navigateToDetailCard() {
     router.navigate(const ContestDetailRoute());
   }
