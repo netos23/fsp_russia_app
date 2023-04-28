@@ -7,6 +7,7 @@ import 'package:fsp_russia_app/domain/contest_service.dart';
 import 'package:fsp_russia_app/entity/contest_model.dart';
 import 'package:fsp_russia_app/entity/user_model.dart';
 import 'package:fsp_russia_app/internal/logger.dart';
+import 'package:fsp_russia_app/domain/auth_service.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
 
 class ContestScreenPresenter {
@@ -16,6 +17,7 @@ class ContestScreenPresenter {
   final ValueNotifier<List<ContestModel>?> contests = ValueNotifier(null);
 
   ContestScreenPresenter(this.router, this.apiClient);
+  final auth = AuthService();
 
   void navigateToDetailCard() {
     router.navigate(const ContestDetailRoute());

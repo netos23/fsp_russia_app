@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/domain/auth_service.dart';
+import 'package:fsp_russia_app/screens/my_contests_screen/my_contests_screen_presenter.dart';
+import 'package:provider/provider.dart';
 import 'package:fsp_russia_app/domain/contest_service.dart';
 import 'package:fsp_russia_app/entity/contest_model.dart';
 import 'package:shimmer/shimmer.dart';
@@ -94,27 +97,36 @@ class ContestCard extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      if (onEdit != null)
-                                        IconButton(
-                                          onPressed: onEdit,
-                                          icon: Icon(
-                                            Icons.edit,
-                                            color: colorSheme.primary,
-                                          ),
-                                        ),
-                                      if (onAnalitics != null)
-                                        IconButton(
-                                          onPressed: onAnalitics,
-                                          icon: Icon(
-                                            Icons.analytics_outlined,
-                                            color: colorSheme.primary,
-                                          ),
-                                        ),
-                                    ],
-                                  ),
+                                  AnimatedBuilder(
+                                      animation: AuthService(),
+                                      builder: (c, w) {
+                                        if (AuthService().model?.type != 0 &&
+                                            AuthService().model?.type !=
+                                                null) {
+                                          return Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                if (onEdit != null)
+                                                  IconButton(
+                                                    onPressed: onEdit,
+                                                    icon: Icon(
+                                                      Icons.edit,
+                                                      color: colorSheme.primary,
+                                                    ),
+                                                  ),
+                                                if (onAnalitics != null)
+                                                  IconButton(
+                                                    onPressed: onAnalitics,
+                                                    icon: Icon(
+                                                      Icons.analytics_outlined,
+                                                      color: colorSheme.primary,
+                                                    ),
+                                                  ),
+                                              ]);
+                                        }
+                                        return SizedBox.shrink();
+                                      }),
                                   Text(
                                     '10.10.2023 13:00',
                                     style: Theme.of(context)
