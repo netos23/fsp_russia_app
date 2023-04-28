@@ -3,11 +3,16 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:fsp_russia_app/entity/auth_model.dart';
 import 'package:fsp_russia_app/entity/contest_model.dart';
+import 'package:fsp_russia_app/entity/invite_teammate.dart';
 import 'package:fsp_russia_app/entity/registration_model.dart';
 import 'package:fsp_russia_app/entity/tokens_model.dart';
 import 'package:fsp_russia_app/entity/user_edit_model.dart';
 import 'package:fsp_russia_app/entity/user_model.dart';
 import 'package:retrofit/http.dart';
+
+import '../entity/accept_invite.dart';
+import '../entity/create_team.dart';
+import '../entity/invite.dart';
 
 part 'api_clent.g.dart';
 
@@ -68,4 +73,22 @@ abstract class ApiClient {
     @Body() required ContestModel request,
   });
 
+
+  @POST('/team/')
+  Future<void> createTeam({
+    @Body() required CreateTeam request,
+  });
+
+  @POST('/team/accept_invite')
+  Future<void> acceptInvite({
+    @Body() required AcceptInvite request,
+  });
+
+  @GET('/team/invite')
+  Future<Invite> invite();
+
+  @POST('/team/invite')
+  Future<void> inviteTeammate({
+    @Body() required InviteTeammate request,
+  });
 }
