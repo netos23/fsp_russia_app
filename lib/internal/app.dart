@@ -38,7 +38,7 @@ class _SportAppState extends State<SportApp> {
           create:  (_) {
             var dio = Dio();
             dio.options
-              ..baseUrl = 'https://410b-188-254-110-157.ngrok-free.app/'
+              ..baseUrl = 'https://690a-94-25-60-188.ngrok-free.app/'
               ..connectTimeout = timeout
               ..receiveTimeout = timeout
               ..sendTimeout = timeout;
@@ -55,6 +55,17 @@ class _SportAppState extends State<SportApp> {
             colorScheme: lightColorScheme,
             textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
           ),
+          highContrastTheme: ThemeData(
+            useMaterial3: true,
+            colorScheme: hightColorScheme,
+            textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+          ),
+          highContrastDarkTheme: ThemeData(
+            useMaterial3: true,
+            colorScheme: hightColorScheme,
+            textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
+          ),
+
           darkTheme: ThemeData(
             useMaterial3: true,
             colorScheme: darkColorScheme,

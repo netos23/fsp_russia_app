@@ -84,14 +84,14 @@ class MyContestsScreenView extends StatelessWidget {
                 builder: (c, w) {
                   if (presenter.auth.model?.type != 0 &&
                       presenter.auth.model?.type != null) {
-                    returnPositioned(
-              right: 16.0,
-              bottom: kIsWeb ? 16.0 : 120.0,
-              child: FloatingActionButton(
-                child: Icon(Icons.add),
-                onPressed: presenter.routeToCreateContest,
-              ),
-            );
+                    return Positioned(
+                      right: 16.0,
+                      bottom: kIsWeb ? 16.0 : 120.0,
+                      child: FloatingActionButton(
+                        child: Icon(Icons.add),
+                        onPressed: presenter.routeToCreateContest,
+                      ),
+                    );
                   }
                   return const SizedBox.shrink();
                 }),

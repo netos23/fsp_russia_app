@@ -116,7 +116,8 @@ class ContestScreenView extends StatelessWidget {
                                   child: Material(
                                     child: ContestCard(
                                       item: actual[index],
-                                      onTap: presenter.navigateToDetailCard,
+                                      onTap: () => presenter
+                                          .navigateToDetailCard(actual[index]),
                                     ),
                                   ),
                                 ),
@@ -150,7 +151,8 @@ class ContestScreenView extends StatelessWidget {
                                   child: Material(
                                     child: ContestCard(
                                       item: actual[index],
-                                      onTap: presenter.navigateToDetailCard,
+                                      onTap: () => presenter
+                                          .navigateToDetailCard(actual[index]),
                                     ),
                                   ),
                                 ),
@@ -184,7 +186,8 @@ class ContestScreenView extends StatelessWidget {
                                   child: Material(
                                     child: ContestCard(
                                       item: future[index],
-                                      onTap: presenter.navigateToDetailCard,
+                                      onTap: () => presenter
+                                          .navigateToDetailCard(future[index]),
                                     ),
                                   ),
                                 ),

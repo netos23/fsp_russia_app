@@ -66,9 +66,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ContestDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ContestDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ContestDetailScreen(),
+        child: ContestDetailScreen(
+          key: args.key,
+          model: args.model,
+        ),
       );
     },
     ContestRoute.name: (routeData) {
@@ -285,16 +289,40 @@ class AnaliticsRouteArgs {
 
 /// generated route for
 /// [ContestDetailScreen]
-class ContestDetailRoute extends PageRouteInfo<void> {
-  const ContestDetailRoute({List<PageRouteInfo>? children})
-      : super(
+class ContestDetailRoute extends PageRouteInfo<ContestDetailRouteArgs> {
+  ContestDetailRoute({
+    Key? key,
+    required ContestModel model,
+    List<PageRouteInfo>? children,
+  }) : super(
           ContestDetailRoute.name,
+          args: ContestDetailRouteArgs(
+            key: key,
+            model: model,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ContestDetailRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ContestDetailRouteArgs> page =
+      PageInfo<ContestDetailRouteArgs>(name);
+}
+
+class ContestDetailRouteArgs {
+  const ContestDetailRouteArgs({
+    this.key,
+    required this.model,
+  });
+
+  final Key? key;
+
+  final ContestModel model;
+
+  @override
+  String toString() {
+    return 'ContestDetailRouteArgs{key: $key, model: $model}';
+  }
 }
 
 /// generated route for

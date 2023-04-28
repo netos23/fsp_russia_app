@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/entity/contest_model.dart';
 import 'package:fsp_russia_app/screens/analitics_screen/analitics_screen.dart';
 import 'package:fsp_russia_app/screens/auth/auth_guard.dart';
 import 'package:fsp_russia_app/screens/calendar_screen/calendar_screen.dart';

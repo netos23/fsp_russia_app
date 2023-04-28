@@ -53,7 +53,7 @@ class FavouritesScreenView extends StatelessWidget {
                     child: Material(
                       child: ContestCard(
                         item: data[index],
-                        onTap: presenter.navigateToDetailCard,
+                        onTap: () => presenter.navigateToDetailCard(data[index]),
                       ),
                     ),
                   ),
