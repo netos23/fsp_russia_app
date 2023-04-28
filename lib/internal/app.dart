@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:provider/provider.dart';
 
 import 'color_schemes.g.dart';
@@ -26,10 +28,23 @@ class _SportAppState extends State<SportApp> {
 
   @override
   Widget build(BuildContext context) {
+    const timeout = Duration(seconds: 30);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (context) => ValueNotifier(ThemeMode.light),
+        ),
+        Provider(
+          create:  (_) {
+            var dio = Dio();
+            dio.options
+              ..baseUrl = 'https://410b-188-254-110-157.ngrok-free.app/'
+              ..connectTimeout = timeout
+              ..receiveTimeout = timeout
+              ..sendTimeout = timeout;
+            dio.interceptors.add(PrettyDioLogger());
+            return dio;
+          },
         ),
       ],
       builder: (context, _) {

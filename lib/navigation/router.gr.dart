@@ -46,9 +46,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AuthRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AuthScreen(),
+        child: AuthScreen(
+          key: args.key,
+          onResult: args.onResult,
+        ),
       );
     },
     AnaliticsRoute.name: (routeData) {
@@ -206,16 +210,39 @@ class RegistrationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AuthScreen]
-class AuthRoute extends PageRouteInfo<void> {
-  const AuthRoute({List<PageRouteInfo>? children})
-      : super(
+class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
+  AuthRoute({
+    Key? key,
+    required void Function(bool) onResult,
+    List<PageRouteInfo>? children,
+  }) : super(
           AuthRoute.name,
+          args: AuthRouteArgs(
+            key: key,
+            onResult: onResult,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AuthRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AuthRouteArgs> page = PageInfo<AuthRouteArgs>(name);
+}
+
+class AuthRouteArgs {
+  const AuthRouteArgs({
+    this.key,
+    required this.onResult,
+  });
+
+  final Key? key;
+
+  final void Function(bool) onResult;
+
+  @override
+  String toString() {
+    return 'AuthRouteArgs{key: $key, onResult: $onResult}';
+  }
 }
 
 /// generated route for
