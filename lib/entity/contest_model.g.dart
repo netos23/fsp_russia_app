@@ -19,6 +19,7 @@ _$_ContestModel _$$_ContestModelFromJson(Map<String, dynamic> json) =>
       feeding: json['feeding'] as bool,
       description: json['description'] as String,
       difficulty: json['difficulty'] as int,
+      youtube: json['youtube'] as String?,
     );
 
 Map<String, dynamic> _$$_ContestModelToJson(_$_ContestModel instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_ContestModelToJson(_$_ContestModel instance) =>
       'feeding': instance.feeding,
       'description': instance.description,
       'difficulty': instance.difficulty,
+      'youtube': instance.youtube,
     };

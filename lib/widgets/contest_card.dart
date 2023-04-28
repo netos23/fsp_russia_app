@@ -31,6 +31,14 @@ class ContestCard extends StatelessWidget {
     final contest = ContestService();
     final isInFavorite = contest.favourites.contains(item);
     final colorSheme = Theme.of(context).colorScheme;
+    final start = item.begin;
+    final end = item.end;
+    double? dt;
+    if (start != null && end != null) {
+      final d = DateTime.fromMillisecondsSinceEpoch(
+          end.millisecondsSinceEpoch - start.millisecondsSinceEpoch);
+      dt = d.hour + d.minute / 60;
+    }
     return InkWell(
       onTap: onTap,
       child: Stack(
@@ -69,7 +77,7 @@ class ContestCard extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Title',
+                                    item.name,
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
@@ -80,7 +88,7 @@ class ContestCard extends StatelessWidget {
                                                 .onBackground),
                                   ),
                                   Text(
-                                    'Subtitle',
+                                    item.cityId ?? "Город не указан",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
@@ -103,8 +111,7 @@ class ContestCard extends StatelessWidget {
                                       animation: AuthService(),
                                       builder: (c, w) {
                                         if (AuthService().model?.type != 0 &&
-                                            AuthService().model?.type !=
-                                                null) {
+                                            AuthService().model?.type != null) {
                                           return Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
@@ -130,7 +137,9 @@ class ContestCard extends StatelessWidget {
                                         return SizedBox.shrink();
                                       }),
                                   Text(
-                                    '10.10.2023 13:00',
+                                    start == null
+                                        ? ''
+                                        : '${start.day}.${start.month}.${start.year} ${start.hour}:${start.minute}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge
@@ -141,7 +150,9 @@ class ContestCard extends StatelessWidget {
                                                 .onBackground),
                                   ),
                                   Text(
-                                    '4 часа',
+                                    dt == null
+                                        ? 'Время не указано'
+                                        : '$dt часа',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyLarge

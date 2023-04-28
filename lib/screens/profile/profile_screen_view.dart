@@ -224,7 +224,7 @@ class _ProfileView extends StatelessWidget {
                         ),
                         Container(
                           width: 400,
-                          margin: const EdgeInsets.symmetric(vertical: 16),
+                          margin: const EdgeInsets.symmetric(vertical: 3),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: colorScheme.errorContainer,

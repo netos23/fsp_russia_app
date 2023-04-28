@@ -36,6 +36,7 @@ mixin _$ContestModel {
   bool get feeding => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get difficulty => throw _privateConstructorUsedError;
+  String? get youtube => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   DateTime? get begin => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -65,6 +66,7 @@ abstract class $ContestModelCopyWith<$Res> {
       bool feeding,
       String description,
       int difficulty,
+      String? youtube,
       @JsonKey(includeFromJson: false, includeToJson: false) DateTime? begin,
       @JsonKey(includeFromJson: false, includeToJson: false) DateTime? end});
 }
@@ -93,6 +95,7 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
+    Object? youtube = freezed,
     Object? begin = freezed,
     Object? end = freezed,
   }) {
@@ -141,6 +144,10 @@ class _$ContestModelCopyWithImpl<$Res, $Val extends ContestModel>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      youtube: freezed == youtube
+          ? _value.youtube
+          : youtube // ignore: cast_nullable_to_non_nullable
+              as String?,
       begin: freezed == begin
           ? _value.begin
           : begin // ignore: cast_nullable_to_non_nullable
@@ -173,6 +180,7 @@ abstract class _$$_ContestModelCopyWith<$Res>
       bool feeding,
       String description,
       int difficulty,
+      String? youtube,
       @JsonKey(includeFromJson: false, includeToJson: false) DateTime? begin,
       @JsonKey(includeFromJson: false, includeToJson: false) DateTime? end});
 }
@@ -199,6 +207,7 @@ class __$$_ContestModelCopyWithImpl<$Res>
     Object? feeding = null,
     Object? description = null,
     Object? difficulty = null,
+    Object? youtube = freezed,
     Object? begin = freezed,
     Object? end = freezed,
   }) {
@@ -247,6 +256,10 @@ class __$$_ContestModelCopyWithImpl<$Res>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      youtube: freezed == youtube
+          ? _value.youtube
+          : youtube // ignore: cast_nullable_to_non_nullable
+              as String?,
       begin: freezed == begin
           ? _value.begin
           : begin // ignore: cast_nullable_to_non_nullable
@@ -274,6 +287,7 @@ class _$_ContestModel implements _ContestModel {
       required this.feeding,
       required this.description,
       required this.difficulty,
+      this.youtube,
       @JsonKey(includeFromJson: false, includeToJson: false) this.begin,
       @JsonKey(includeFromJson: false, includeToJson: false) this.end});
 
@@ -308,6 +322,8 @@ class _$_ContestModel implements _ContestModel {
   @override
   final int difficulty;
   @override
+  final String? youtube;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final DateTime? begin;
   @override
@@ -316,7 +332,7 @@ class _$_ContestModel implements _ContestModel {
 
   @override
   String toString() {
-    return 'ContestModel(active: $active, employer: $employer, organizerId: $organizerId, name: $name, datetimeStart: $datetimeStart, imagePath: $imagePath, datetimeEnd: $datetimeEnd, cityId: $cityId, feeding: $feeding, description: $description, difficulty: $difficulty, begin: $begin, end: $end)';
+    return 'ContestModel(active: $active, employer: $employer, organizerId: $organizerId, name: $name, datetimeStart: $datetimeStart, imagePath: $imagePath, datetimeEnd: $datetimeEnd, cityId: $cityId, feeding: $feeding, description: $description, difficulty: $difficulty, youtube: $youtube, begin: $begin, end: $end)';
   }
 
   @override
@@ -342,6 +358,7 @@ class _$_ContestModel implements _ContestModel {
                 other.description == description) &&
             (identical(other.difficulty, difficulty) ||
                 other.difficulty == difficulty) &&
+            (identical(other.youtube, youtube) || other.youtube == youtube) &&
             (identical(other.begin, begin) || other.begin == begin) &&
             (identical(other.end, end) || other.end == end));
   }
@@ -361,6 +378,7 @@ class _$_ContestModel implements _ContestModel {
       feeding,
       description,
       difficulty,
+      youtube,
       begin,
       end);
 
@@ -396,6 +414,7 @@ abstract class _ContestModel implements ContestModel {
       required final bool feeding,
       required final String description,
       required final int difficulty,
+      final String? youtube,
       @JsonKey(includeFromJson: false, includeToJson: false)
           final DateTime? begin,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -431,6 +450,8 @@ abstract class _ContestModel implements ContestModel {
   String get description;
   @override
   int get difficulty;
+  @override
+  String? get youtube;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   DateTime? get begin;

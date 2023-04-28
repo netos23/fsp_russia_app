@@ -10,6 +10,8 @@ import 'package:fsp_russia_app/internal/logger.dart';
 import 'package:fsp_russia_app/domain/auth_service.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
 
+int maxRating = 5;
+
 class ContestScreenPresenter {
   final StackRouter router;
   final ApiClient apiClient;
@@ -71,6 +73,29 @@ class ContestScreenPresenter {
     return contests
         .where(
           (c) => c.end!.millisecondsSinceEpoch < now.millisecondsSinceEpoch,
+        )
+        .toList();
+  }
+
+  List<ContestModel> getDificalty(List<ContestModel> contests) {
+    final now = DateTime.now();
+    return contests
+        .where(
+          (c) => c.difficulty > 5,
+        )
+        .toList();
+  }
+
+  List<ContestModel> getRecomended(List<ContestModel> contests) {
+    final now = DateTime.now();
+    final service = AuthService();
+    final model = service.model;
+    if(model == null){
+      return [];
+    }
+    return contests
+        .where(
+          (c) => (model.rating / maxRating) * 10 >= c.difficulty,
         )
         .toList();
   }
