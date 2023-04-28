@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/domain/contest_service.dart';
+import 'package:fsp_russia_app/entity/contest_model.dart';
 import 'package:fsp_russia_app/domain/auth_service.dart';
 import 'package:fsp_russia_app/screens/my_contests_screen/my_contests_screen_presenter.dart';
 import 'package:provider/provider.dart';
