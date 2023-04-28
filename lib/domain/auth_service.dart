@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fsp_russia_app/entity/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService extends ChangeNotifier {
@@ -10,6 +11,8 @@ class AuthService extends ChangeNotifier {
 
   String? _accessToken;
   int? _id;
+
+  UserModel? model;
 
   Future<void> init() async {
     final prfs = await SharedPreferences.getInstance();
@@ -26,6 +29,8 @@ class AuthService extends ChangeNotifier {
     _saveTokens(accessToken, id);
     notifyListeners();
   }
+
+  String? get accessToken => _accessToken;
 
   Future<void> _saveTokens(
     String accessToken,
@@ -50,4 +55,6 @@ class AuthService extends ChangeNotifier {
     _deleteTokens();
     notifyListeners();
   }
+
+  int? get id => _id;
 }

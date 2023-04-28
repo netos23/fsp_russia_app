@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:fsp_russia_app/api/api_clent.dart';
 import 'package:fsp_russia_app/screens/profile/profile_screen_view.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +14,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (BuildContext context) =>
-          ProfileScreenPresenter(router: context.router),
+      create: (BuildContext context) => ProfileScreenPresenter(
+        router: context.router,
+        apiClient: ApiClient(
+          context.read(),
+        ),
+      ),
+      dispose: (_, p) => p.dispose(),
       child: const ProfileScreenView(),
     );
   }
