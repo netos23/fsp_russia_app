@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fsp_russia_app/domain/auth_service.dart';
 import 'package:fsp_russia_app/navigation/router.dart';
 
 class ContestScreenPresenter {
   final StackRouter router;
 
+  final auth = AuthService();
   ContestScreenPresenter(this.router);
 
   void navigateToDetailCard() {
