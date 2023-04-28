@@ -16,6 +16,6 @@ class TeamScreenPresenter {
 
   Future<void> createTeam() async {
     client.createTeam(request: CreateTeam(ownerId: auth.model!.id, name: 'Моя команда'));
-    auth.model = await client.getUser(userId: auth.model! xa.id);
+    auth.model = await client.getUser(userId: auth.model!.id);
   }
 }
